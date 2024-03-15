@@ -9,6 +9,8 @@ export default function Game() {
     length: "",
     rating: "",
   });
+  // List of game category options
+  const options = [];
   const [isNew, setIsNew] = useState(true);
   const params = useParams();
   const navigate = useNavigate();
@@ -139,7 +141,7 @@ export default function Game() {
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Game cover..."
                     value={form.img}
-                    onChange={(e) => updateForm({ position: e.target.value })}
+                    onChange={(e) => updateForm({ img: e.target.value })}
                   />
                 </div>
               </div>
@@ -325,7 +327,7 @@ export default function Game() {
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Game length..."
                     value={form.length}
-                    onChange={(e) => updateForm({ name: e.target.value })}
+                    onChange={(e) => updateForm({ length: e.target.value })}
                   />
                 </div>
               </div>
@@ -346,65 +348,11 @@ export default function Game() {
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Rating..."
                     value={form.rating}
-                    onChange={(e) => updateForm({ name: e.target.value })}
+                    onChange={(e) => updateForm({ rating: e.target.value })}
                   />
                 </div>
               </div>
             </div>
-            {/* <div>
-              <fieldset className="mt-4">
-                <legend className="sr-only">Category Options</legend>
-                <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                  <div className="flex items-center">
-                    <input
-                      id="positionIntern"
-                      name="positionOptions"
-                      type="radio"
-                      value="Intern"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.level === "Intern"}
-                      onChange={(e) => updateForm({ level: e.target.value })}
-                    />
-                    <label
-                      htmlFor="positionIntern"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      Intern
-                    </label>
-                    <input
-                      id="positionJunior"
-                      name="positionOptions"
-                      type="radio"
-                      value="Junior"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.level === "Junior"}
-                      onChange={(e) => updateForm({ level: e.target.value })}
-                    />
-                    <label
-                      htmlFor="positionJunior"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      Junior
-                    </label>
-                    <input
-                      id="positionSenior"
-                      name="positionOptions"
-                      type="radio"
-                      value="Senior"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.level === "Senior"}
-                      onChange={(e) => updateForm({ level: e.target.value })}
-                    />
-                    <label
-                      htmlFor="positionSenior"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      Senior
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
-            </div> */}
           </div>
         </div>
         <input

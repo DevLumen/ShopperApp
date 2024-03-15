@@ -31,13 +31,15 @@ router.get("/:id", async (req, res) => {
 // This section will help you create a new game.
 router.post("/", async (req, res) => {
   try {
-    let newDocument = {
+    let newGame = {
       name: req.body.name,
-      position: req.body.position,
-      level: req.body.level,
+      img: req.body.img,
+      category: req.body.category,
+      length: req.body.length,
+      rating: req.body.rating,
     };
     let collection = await db.collection("games");
-    let result = await collection.insertOne(newDocument);
+    let result = await collection.insertOne(newGame);
     res.send(result).status(204);
   } catch (err) {
     console.error(err);
@@ -52,8 +54,10 @@ router.patch("/:id", async (req, res) => {
     const updates = {
       $set: {
         name: req.body.name,
-        position: req.body.position,
-        level: req.body.level,
+        img: req.body.img,
+        category: req.body.category,
+        length: req.body.length,
+        rating: req.body.rating,
       },
     };
 

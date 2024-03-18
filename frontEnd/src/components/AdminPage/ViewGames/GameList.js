@@ -44,7 +44,7 @@ const Game = (props) => (
 export default function GameList() {
   const [games, setGames] = useState([]);
 
-  // This method fetches the games from the database.
+  // This method fetches all the games from the database.
   useEffect(() => {
     async function getGames() {
       const response = await fetch(`http://localhost:5050/game/`);

@@ -9,8 +9,13 @@ export default function Game() {
     length: "",
     rating: "",
   });
-  // List of game category options
-  const options = [];
+  // List of game category options, to be set as dropdown values in jsx
+  const options = [
+    `Action, RPG, Shooter, First-person shooter, 
+     Adventure, Strategy, Puzzle, Simulation,
+     Platformer, Racing, Battle Royale, Stealth,
+     Sandbox, MMO, Fighting`
+  ];
   const [isNew, setIsNew] = useState(true);
   const params = useParams();
   const navigate = useNavigate();

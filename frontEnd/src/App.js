@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<GameList/>}/>
           <Route path="/create" element={<Game/>}/>
-          <Route path="/splash" element={<Splash/>}/>
+          <Route path="/register" element={<Splash/>}/>
         </Routes>
     </div>
   );

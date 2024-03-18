@@ -41,5 +41,5 @@ const User = new Schema({
 // Export Model
 User.plugin(passportLocalMongoose);
 
-const user = mongoose.model('userInfo', User);
-module.exports = user; 
+const user = mongoose.model('user', User);
+export {user}; 

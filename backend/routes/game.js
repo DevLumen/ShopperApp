@@ -38,6 +38,7 @@ router.post("/", async (req, res) => {
       length: req.body.length,
       rating: req.body.rating,
     };
+    console.log(newGame)
     let collection = await db.collection("games");
     let result = await collection.insertOne(newGame);
     res.send(result).status(204);

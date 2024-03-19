@@ -48,6 +48,7 @@ export default function GameList() {
   useEffect(() => {
     async function getGames() {
       const response = await fetch(`http://localhost:5050/game/`);
+      console.log(response)
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         console.error(message);

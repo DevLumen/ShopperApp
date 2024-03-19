@@ -21,10 +21,11 @@ export default function Splash() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const newUser = await axios.post("http://localhost:5050/register",{
+      console.log(form)
+      const newUser = await axios.post("http://localhost:5050/register", {
         method: "POST",
-        headers:{ "Content-Type": "application/json"},
-        body: JSON.stringify(form)
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({...form})
       });
       console.log(newUser)
       navigate("/")

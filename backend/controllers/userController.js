@@ -1,5 +1,5 @@
 import { user } from "../models/users.js";
-
+import db from "../db/connection.js";
 
 const login = async (req, res, next) => {
     const {email, password} = req.body;
@@ -11,13 +11,22 @@ const login = async (req, res, next) => {
 };
 
 const register = async (req, res, next) => {
+    let parsed = JSON.parse(req.body.body);
+    // console.log(parsed)
+    // Why is body body???
     try{
-        const newUser = await user.create(req.body);
-        console.log("hi----------======----")
-        res.json("Successfully added new user" + newUser.name);
-
+        let newUser = {
+            username: parsed.username,
+            email: parsed.email,
+            password: parsed.password
+        }
+        let userCollection = db.collection("users");
+        let result = await userCollection.insertOne(newUser);
+        res.send(result).status(200);
+        return
     }catch(e){
         res.json("Failed " + e);
+        console.log("OH NOOOOOOOOOOOOOO")
     }
 
 }

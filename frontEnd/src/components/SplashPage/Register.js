@@ -27,7 +27,6 @@ export default function Register() {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({...form})
       });
-      // console.log(newUser)
       navigate("/home")
     }catch(err){
       console.log(err);

@@ -1,13 +1,14 @@
-import { user } from "../models/users.js";
+import {user} from "../models/users.js";
 import db from "../db/connection.js";
 
 const login = async (req, res, next) => {
-    const {email, password} = req.body.body;
-    const findUser = await user.findOne({email: email});
-    console.log(findUser.password);
-    if(findUser.password === password) res.json("Success, you are logged in");
-    else res.json("That password is incorrect.");
-
+    const {email, password} = JSON.parse(req.body.body);
+    console.log(email, password);
+    const findUser = await user.find({email: email});
+    console.log(findUser);
+    if(findUser.password === password) console.log("Success, you are logged in");
+    else console.log("That password is incorrect.");
+    return
 };
 
 const register = async (req, res, next) => {

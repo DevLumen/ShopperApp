@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   
   const [form, setForm] = useState({
-    username: "",
     email: "",
     password: ""
   })
@@ -15,6 +14,20 @@ export default function Login() {
         return setForm((prev) => {
           return {...prev, ...value}
         })
+    }
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try{
+        await axios.post("http://localhost:5050/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({...form})
+        });
+        navigate("/home")
+      }catch(err){
+        console.log(err)
+      }
     }
 
   return (
@@ -41,7 +54,7 @@ export default function Login() {
         value={form.password}
         onChange={(e) => handleChange({password: e.target.value})}
         />
-        <button type="submit" value="login">Submit</button>
+        <button type="submit" value="login" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   );

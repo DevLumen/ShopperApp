@@ -2,9 +2,9 @@ import { user } from "../models/users.js";
 import db from "../db/connection.js";
 
 const login = async (req, res, next) => {
-    const {email, password} = req.body;
-
+    const {email, password} = req.body.body;
     const findUser = await user.findOne({email: email});
+    console.log(findUser.password);
     if(findUser.password === password) res.json("Success, you are logged in");
     else res.json("That password is incorrect.");
 
@@ -12,8 +12,7 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
     let parsed = JSON.parse(req.body.body);
-    // console.log(parsed)
-    // Why is body body???
+    
     try{
         let newUser = {
             username: parsed.username,
@@ -26,7 +25,7 @@ const register = async (req, res, next) => {
         return
     }catch(e){
         res.json("Failed " + e);
-        console.log("OH NOOOOOOOOOOOOOO")
+        
     }
 
 }

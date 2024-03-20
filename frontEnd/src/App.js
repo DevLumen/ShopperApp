@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Game from './components/AdminPage/CreateGame/Game';
@@ -11,8 +11,6 @@ import Login from './components/SplashPage/Login';
 // Outlet
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [email, setEmail] = useState('');
   
   return ( 
     <div className="w-full p-6">
@@ -21,9 +19,9 @@ function App() {
           <Route path="/" element={<GameList/>}/>
           <Route path="/create" element={<Game/>}/>
           <Route path="/register" element={<Register/>}/>
-          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail}/>}/>
+          <Route path="/login" element={<Login />}/>
           <Route path="/splash" element={<Splash/>}/>
-          <Route path="/home" element={<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+          <Route path="/home" element={<Home />}/>
         </Routes>
     </div>
   );
